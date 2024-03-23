@@ -1,8 +1,5 @@
 package part7;
 
-import java.math.BigInteger;
-import java.util.Scanner;
-
 public class BigIntegerSum {
     public static void main(String[] args) {
         String a = "123456789012345678901234567890123456789012345678901234567890";
