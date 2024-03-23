@@ -8,12 +8,32 @@ public class ArrayElementStatistic {
         int [] counts = new int[array.length];
         int count = 0;
 
+        count = CalculateStatistics(array, unique, counts, count);
+
+        int[][] result = ConvertResults(unique, counts, count);
+
+        for (int i = 0; i < result.length; i++) {
+            System.out.println(result[i][0] + "=" + ((double) result[i][1] * 100 / array.length) + " %");
+        }
+
+    }
+
+    private static int[][] ConvertResults(int[] unique, int[] counts, int count) {
+        int [][] result = new int [count][2];
+        for (int i = 0; i < count; i++) {
+            result[i][0] = unique[i];
+            result[i][1] = counts[i];
+        }
+        return result;
+    }
+
+    private static int CalculateStatistics(int[] array, int[] unique, int[] counts, int count) {
         for(int i = 0; i < array.length ; i++){
 
             var element = array[i];
             boolean exist = false;
 
-            for (int j=0; j < count; j++){
+            for (int j = 0; j < count; j++){
                 if(unique[j] == element){
                     exist = true;
                     break;
@@ -31,16 +51,6 @@ public class ArrayElementStatistic {
                 count++;
             }
         }
-
-        int [][] result = new int [count][2];
-        for (int i = 0; i < count; i++) {
-            result[i][0] = unique[i];
-            result[i][1] = counts[i];
-        }
-
-        for (int i = 0; i < result.length; i++) {
-            System.out.println(result[i][0] + "=" + ((double) result[i][1] * 100 / array.length) + " %");
-        }
-
+        return count;
     }
 }
