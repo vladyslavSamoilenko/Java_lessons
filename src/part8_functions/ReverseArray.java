@@ -1,5 +1,7 @@
 package part8_functions;
 
+import java.util.Arrays;
+
 public class ReverseArray {
     public static void main(String[] args) {
         //read source data
@@ -7,9 +9,7 @@ public class ReverseArray {
         //processing
         reverse(array);
         //display results
-        for (int num: array) {
-            System.out.print(num + " ");
-        }
+        System.out.print(Arrays.toString(array));
 
     }
 
