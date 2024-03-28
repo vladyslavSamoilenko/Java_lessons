@@ -14,14 +14,14 @@ public class GuessTheNumberUsingRecursion {
         private static void GuessTheNumber( int number){
             System.out.print("Print your number: ");
             var userCase = new Scanner(System.in).nextInt();
-            if( userCase == number){
-                System.out.println("Congratulations, you guessed the number!");
+            if( number > userCase){
+                System.out.println("number > " + userCase + ". Try again:");
+                GuessTheNumber(number);
             } else if (number < userCase) {
                 System.out.println("number < " + userCase + ". Try again:");
                 GuessTheNumber(number);
             }else {
-                System.out.println("number > " + userCase + ". Try again:");
-                GuessTheNumber(number);
+                System.out.println("Congratulations, you guessed the number!");
             }
 
         }
