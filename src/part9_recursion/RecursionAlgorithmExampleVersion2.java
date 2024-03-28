@@ -15,9 +15,7 @@ public class RecursionAlgorithmExampleVersion2 {
         }
     }
     private static void printNumbersFromAndTo(int i){
-        if(i == 0) {
-            return;
-        }else {
+        if(i != 0) {
             printNumbersFromAndTo(i-1);
             System.out.print(i + "\t");
         }
