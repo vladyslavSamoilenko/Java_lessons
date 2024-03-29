@@ -9,8 +9,8 @@ public class ExtractPositiveIntNumbersFromString {
         String string = "Hello 1234 from 23, or java - is not java11!-2.3 is not a 24";
         // processing
         int[] numbers = extractNumbersFromString(string);
-//        // display results
-//        System.out.println(Arrays.toString(numbers));
+      // display results
+       System.out.println(Arrays.toString(numbers));
     }
 
     private static int[] extractNumbersFromString(final String string) {
