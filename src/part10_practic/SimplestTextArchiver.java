@@ -3,7 +3,7 @@ package part10_practic;
 public class SimplestTextArchiver {
     public static void main(String[] args) {
         // read source data
-        String source = "A".repeat(8) + "B".repeat(3) + "C".repeat(5);
+        String source = "A".repeat(18) + "B".repeat(8) + "C".repeat(8);
         System.out.println("Source text:   " + source);
 
         // processing
@@ -18,34 +18,45 @@ public class SimplestTextArchiver {
     }
 
     private static String zip(String source) {
-        StringBuilder str_ch = new StringBuilder();
+        StringBuilder result = new StringBuilder();
+        var prev = source.charAt(0);
         int count = 1;
-        for(int i = 0; i < source.length();i++){
-            var temp_char = source.charAt(i);
-            if ( i + 1 == source.length()){
-                str_ch.append(temp_char);
-                str_ch.append(count);
-                count=1;
-            } else if (temp_char == source.charAt(i+1)) {
+        for(int i = 1; i < source.length();i++){
+            var current = source.charAt(i);
+            if (current == prev) {
                 count++;
             }else {
-                str_ch.append(temp_char);
-                str_ch.append(count);
+                result.append(prev).append(count);
                 count=1;
+                prev = current;
             }
         }
-        return str_ch.toString();
+        result.append(prev).append(count);
+        return result.toString();
     }
 
     private static String unzip(String zipped) {
-        StringBuilder str_ch = new StringBuilder();
-        for (int i = 0; i < zipped.length(); i = i + 2){
-           var temp_char1 = zipped.charAt(i);
-           char temp_char2 = zipped.charAt(i + 1);
-           int count = Character.getNumericValue(temp_char2);
-           str_ch.append(String.valueOf(temp_char1).repeat(Math.max(0, count)));
+        StringBuilder result = new StringBuilder();
+        char ch = zipped.charAt(0);
+        StringBuilder countBuilder = new StringBuilder();
+        for (int i = 1; i < zipped.length(); i++){
+           var current = zipped.charAt(i);
+           if (Character.isDigit(current)){
+               countBuilder.append(current);
+           }
+           else {
+               int count = Integer.parseInt(countBuilder.toString());
+               for (int j = 0;j<count;j++){
+                   result.append(ch);
+               }
+               countBuilder.setLength(0);
+               ch = current;
+           }
         }
-
-        return str_ch.toString();
+        int count = Integer.parseInt(countBuilder.toString());
+        for (int j = 0;j <count ;j++){
+            result.append(ch);
+        }
+        return result.toString();
     }
 }
