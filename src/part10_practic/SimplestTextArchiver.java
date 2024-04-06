@@ -3,7 +3,7 @@ package part10_practic;
 public class SimplestTextArchiver {
     public static void main(String[] args) {
         // read source data
-        String source = "A".repeat(18) + "B".repeat(8) + "C".repeat(8);
+        String source = "A".repeat(8) + "B".repeat(3) + "C".repeat(5);
         System.out.println("Source text:   " + source);
 
         // processing
@@ -45,18 +45,19 @@ public class SimplestTextArchiver {
                countBuilder.append(current);
            }
            else {
-               int count = Integer.parseInt(countBuilder.toString());
-               for (int j = 0;j<count;j++){
-                   result.append(ch);
-               }
+               unzipChar(result, ch, countBuilder);
                countBuilder.setLength(0);
                ch = current;
            }
         }
+        unzipChar(result, ch, countBuilder);
+        return result.toString();
+    }
+
+    private static void unzipChar(StringBuilder result, char ch, StringBuilder countBuilder) {
         int count = Integer.parseInt(countBuilder.toString());
-        for (int j = 0;j <count ;j++){
+        for (int j = 0;j<count;j++){
             result.append(ch);
         }
-        return result.toString();
     }
 }
