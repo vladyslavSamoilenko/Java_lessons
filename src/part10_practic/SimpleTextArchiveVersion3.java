@@ -4,7 +4,7 @@ public class SimpleTextArchiveVersion3 {
     public static String digits = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ~!@#$%^&*/()_+=-?<>[]{}\\\"'\\\\|.,";
     public static void main(String[] args) {
         // read source data
-        String source = "A".repeat(11) + "1".repeat(13) + "2".repeat(25);
+        String source = "A".repeat(110) + "1".repeat(130) + "2".repeat(250);
         System.out.println("Source text:   " + source);
 
         // processing
