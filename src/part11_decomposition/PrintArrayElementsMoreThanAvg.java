@@ -34,9 +34,7 @@ public class PrintArrayElementsMoreThanAvg {
     }
     private static int [] trim(int [] array, int count){
         int [] result = new int[count];
-        for (int i = 0; i < count; i++) {
-            result[i] = array[i];
-        }
+        System.arraycopy(array, 0, result, 0, count);
         return result;
 
     }
