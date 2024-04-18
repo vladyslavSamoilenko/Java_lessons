@@ -17,7 +17,6 @@ public class findPopularWord {
         String [] fullArray = new String[text.length()/2];
         String [] WordArray = extractWords(str,ArrChar,fullArray);
         String [] unique = extractUniqueWords(WordArray);
-        System.out.println(Arrays.toString(unique));
         return findThePopularWord(unique,WordArray);
 
     }
@@ -51,7 +50,6 @@ public class findPopularWord {
                 count++;
             }
         }
-        System.out.println(Arrays.toString(uniqueElements));
         return trim(uniqueElements,count);
     }
 
@@ -76,7 +74,6 @@ public class findPopularWord {
             }
 
         }
-        System.out.println(Arrays.toString(fullArray));
         return trim(fullArray, count);
     }
 
