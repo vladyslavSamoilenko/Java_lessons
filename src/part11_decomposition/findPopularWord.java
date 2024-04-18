@@ -5,9 +5,11 @@ import java.util.Objects;
 
 public class findPopularWord {
     public static void main(String[] args) {
-        String text = "hello java world java hello I Hello Java World java";
+        String text = "hello,java-world\tjava hello: I? Hello! Java World. java";
         System.out.println(MostPopularWord(text));
     }
+
+
 
     private static String MostPopularWord(String text) {
         StringBuilder str = new StringBuilder();
@@ -15,7 +17,7 @@ public class findPopularWord {
         String [] fullArray = new String[text.length()/2];
         String [] WordArray = extractWords(str,ArrChar,fullArray);
         String [] unique = extractUniqueWords(WordArray);
-
+        System.out.println(Arrays.toString(unique));
         return findThePopularWord(unique,WordArray);
 
     }
@@ -49,31 +51,32 @@ public class findPopularWord {
                 count++;
             }
         }
+        System.out.println(Arrays.toString(uniqueElements));
         return trim(uniqueElements,count);
     }
 
     private static String [] extractWords(StringBuilder str, char[] ArrChar, String[] fullArray) {
         int index = 0;
         int count = 0;
-
         for (int i = 0; i< ArrChar.length; i++){
 
-            if (ArrChar[i] != ' '){
+            if (Character.isLetter(ArrChar[i]) || Character.isDigit(ArrChar[i])){
                 str.append(ArrChar[i]);
-            } else {
+            } else if(str.length() > 0){
                 String StringConverted = str.toString();
                 fullArray[index++] = StringConverted;
-                str.delete(0, str.length());
+                str.setLength(0);
                 count++;
             }
             if(i == ArrChar.length-1){
                 String StringConverted = str.toString();
                 fullArray[index++] = StringConverted;
-                str.delete(0, str.length());
+                str.setLength(0);
                 count++;
             }
 
         }
+        System.out.println(Arrays.toString(fullArray));
         return trim(fullArray, count);
     }
 
