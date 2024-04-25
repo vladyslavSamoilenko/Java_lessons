@@ -6,6 +6,8 @@ import java.util.Objects;
 public class findPopularWord {
     public static void main(String[] args) {
         String text = "hello,java-world\tjava hello: I? Hello! Java World. java";
+        char [] textChar = text.toCharArray();
+        System.out.println(Arrays.toString(textChar));
         System.out.println(MostPopularWord(text));
     }
 
@@ -14,6 +16,7 @@ public class findPopularWord {
     private static String MostPopularWord(String text) {
         StringBuilder str = new StringBuilder();
         char [] ArrChar = text.toLowerCase().toCharArray();
+        System.out.println(Arrays.toString(ArrChar));
         String [] fullArray = new String[text.length()/2];
         String [] WordArray = extractWords(str,ArrChar,fullArray);
         String [] unique = extractUniqueWords(WordArray);
